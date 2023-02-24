@@ -1,0 +1,72 @@
+{
+  "$schema": "",
+  "$id": "",
+  "title": "Test Shader",
+  "description": "Test Shader Json Schema",
+  "type": "object",
+  "properties": {
+    "vertex": {
+      "description": "relative path to vertex shader",
+      "type": "string"
+    },
+    "fragment": {
+      "description": "relative path to fragment shader",
+      "type": "string"
+    },
+    "input_data": {
+      "description": "input data for the vbo and ebo",
+      "type": "object",
+      "properties": {
+        "vertices": {
+          "description": "vbo data",
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "elements": {
+          "description": "ebo data",
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        }
+      },
+      "required": ["vertices", "elements"]
+    },
+    "input_locations": {
+      "description": "locations of vertex input data",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "vertex location",
+        "properties": {
+          "name": {
+            "description": "name of vertex attribute",
+            "type": "string"
+          },
+          "size": {
+            "description": "size of vertex attribute",
+            "type": "integer"
+          }
+        },
+        "required": ["name", "size"]
+      }
+    },
+    "uniform": {
+      "description": "uniform values",
+      "type": "object",
+      "patternProperties": {
+        ".+": {
+          "description": "value",
+          "type": "array",
+          "items": {
+            "type": ["boolean", "number", "string"]
+          },
+          "minItems": 1
+        }
+      }
+    }
+  },
+  "required": ["vertex", "fragment", "input_data", "input_locations", "uniform"]
+}
