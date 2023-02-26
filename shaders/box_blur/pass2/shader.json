@@ -1,0 +1,28 @@
+{
+  "width": 512,
+  "height": 512,
+  "vertex": "../pass/vert.glsl",
+  "fragment": "../pass/frag.glsl",
+  "input_data": {
+    "vertices": [
+      -1, -1,
+      -1, 1,
+      1, 1,
+      1, -1
+    ],
+    "elements": [
+      0, 1, 2,
+      2, 3, 0
+    ]
+  },
+  "input_locations": [
+    {
+      "name": "aPos",
+      "size": 2
+    }
+  ],
+  "uniform": {
+    "uTexture": ["../pass4"],
+    "uTexOffset": [0.00390625]
+  }
+}
