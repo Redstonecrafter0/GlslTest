@@ -22,14 +22,10 @@ void windowResizeCallback(GLFWwindow*, int w, int h) {
     glViewport(0, 0, width, height);
 }
 
-void errlog(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* message, const void* userParam) {
-    std::cerr << std::string(message, length) << std::endl;
-}
-
 int main(int argc, char** argv) {
     if (argc != 2) {
         std::cout << "usage: glsltest <shaderpath>" << std::endl;
-        std::cout << "       shaderpath - path to shader dir or shader collection file" << std::endl;
+        std::cout << "       shaderpath - path to shader dir" << std::endl;
         return -1;
     }
 
@@ -40,17 +36,6 @@ int main(int argc, char** argv) {
     glfwWindowHint(GLFW_SAMPLES, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-
-//    std::ifstream configFile(argv[1]);
-//    json config = json::parse(configFile);
-//    configFile.close();
-//
-//    if (config.contains("width")) {
-//        width = config["width"].get<GLsizei>();
-//    }
-//    if (config.contains("height")) {
-//        height = config["height"].get<GLsizei>();
-//    }
 
     GLFWwindow* window = glfwCreateWindow(width, height, "GlslTest", nullptr, nullptr);
     if (!window) {
@@ -74,10 +59,9 @@ int main(int argc, char** argv) {
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    glEnable(GL_DEBUG_OUTPUT);
-    glDebugMessageCallback(errlog, nullptr);
-
     auto shaderConfig = ShaderConfig(argv[1]);
+
+    glfwSetWindowSize(window, shaderConfig.width, shaderConfig.height);
 
     bool save = true;
 

@@ -10,14 +10,17 @@ public:
     GLuint fbo;
 
     Framebuffer(GLsizei width, GLsizei height, GLuint slot);
-    Framebuffer();
+    Framebuffer(GLsizei width, GLsizei height);
     ~Framebuffer();
 
-    void bind() const;
+    void bind();
+    void save(const std::filesystem::path& outputPath);
 
     Texture* getTexture() const;
 private:
     Texture* texture;
+    GLsizei width;
+    GLsizei height;
 };
 
 }

@@ -1,6 +1,6 @@
 {
-  "width": 1280,
-  "height": 720,
+  "width": 512,
+  "height": 512,
   "vertex": "vert.glsl",
   "fragment": "frag.glsl",
   "input_data": {

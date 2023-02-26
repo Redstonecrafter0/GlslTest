@@ -15,7 +15,6 @@ public:
     ~Texture();
 
     void bind() const;
-    void save(const std::filesystem::path& outputPath) const;
 
 private:
     GLuint slot;

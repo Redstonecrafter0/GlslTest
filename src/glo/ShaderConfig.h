@@ -8,6 +8,9 @@ namespace glo {
 
 class ShaderConfig {
 public:
+    GLsizei width;
+    GLsizei height;
+
     ShaderConfig(const std::filesystem::path& shaderDir, GLint slot = -1);
     ~ShaderConfig();
 
@@ -21,8 +24,6 @@ private:
     VertexArrayObject* vao;
     ShaderProgram* shaderProgram;
     std::vector<ShaderConfig*> dependencies;
-    GLsizei width;
-    GLsizei height;
 };
 
 }

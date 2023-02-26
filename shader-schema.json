@@ -66,7 +66,7 @@
       "type": "object",
       "patternProperties": {
         ".+": {
-          "description": "value",
+          "description": "uniform value or path to the texture or other shader",
           "type": "array",
           "items": {
             "type": ["boolean", "number", "string"]

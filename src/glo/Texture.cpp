@@ -3,7 +3,6 @@
 #include <iostream>
 
 #include "stb_image.h"
-#include "stb_image_write.h"
 
 using namespace glo;
 
@@ -39,10 +38,4 @@ void Texture::init() {
 void Texture::bind() const {
     glActiveTexture(GL_TEXTURE0 + slot);
     glBindTexture(GL_TEXTURE_2D, texture);
-}
-
-void Texture::save(const std::filesystem::path& outputPath) const {
-    unsigned char buffer[width * height * 4];
-    glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
-    stbi_write_png(outputPath.c_str(), width, height, 4, buffer, width * 4);
 }

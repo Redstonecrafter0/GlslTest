@@ -31,7 +31,7 @@ ShaderConfig::ShaderConfig(const std::filesystem::path& shaderDir, GLint slot) :
     height = config["height"].get<GLsizei>();
 
     if (slot == -1) {
-        framebuffer = new Framebuffer();
+        framebuffer = new Framebuffer(width, height);
     } else {
         framebuffer = new Framebuffer(width, height, slot);
     }
@@ -53,13 +53,7 @@ void ShaderConfig::render(bool save) const {
     framebuffer->bind();
     shaderProgram->use();
     vao->draw();
-    if (save && framebuffer->fbo != 0) {
-        framebuffer->getTexture()->save(shaderDir / "output.png");
-    } else if (save) {
-        unsigned char buffer[width * height * 4];
-        glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
-        stbi_write_png((shaderDir / "output.png").c_str(), width, height, 4, buffer, width * 4);
-    }
+    framebuffer->save(shaderDir / "output.png");
 }
 
 Framebuffer* ShaderConfig::getFramebuffer() const {
