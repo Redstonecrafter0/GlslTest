@@ -1,0 +1,29 @@
+{
+  "width": 1280,
+  "height": 720,
+  "vertex": "../background/vert.glsl",
+  "fragment": "frag.glsl",
+  "input_data": {
+    "vertices": [
+      -1, -1,
+      -1, 1,
+      1, 1,
+      1, -1
+    ],
+    "elements": [
+      0, 1, 2,
+      2, 3, 0
+    ]
+  },
+  "input_locations": [
+    {
+      "name": "aPos",
+      "size": 2
+    }
+  ],
+  "uniform": {
+    "uMask": ["mask.png"],
+    "uBackground": ["../background"],
+    "uTexture": ["lenna.png"]
+  }
+}

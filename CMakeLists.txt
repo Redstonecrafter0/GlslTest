@@ -9,7 +9,9 @@ find_package(GLFW3 REQUIRED)
 find_package(GLEW REQUIRED)
 find_package(nlohmann_json 3.11.2 REQUIRED)
 
-add_executable(GlslTest src/main.cpp src/stb_image.h src/stb_image_write.h)
+FILE(GLOB_RECURSE SRC_LIST ${CMAKE_CURRENT_LIST_DIR}/src/*.*)
+
+add_executable(GlslTest ${SRC_LIST})
 
 target_link_libraries(GlslTest ${GLFW3_LIBRARY} ${OPENGL_LIBRARY} ${GLEW_LIBRARIES} nlohmann_json::nlohmann_json)
-include_directories(GlslTest ${OPENGL_INCLUDE_DIR} ${GLFW3_INCLUDE_DIR} ${GLEW_INCLUDE_DIRS})
+include_directories(GlslTest ${OPENGL_INCLUDE_DIR} ${GLFW3_INCLUDE_DIR} ${GLEW_INCLUDE_DIRS} src)

@@ -5,6 +5,14 @@
   "description": "Test Shader Json Schema",
   "type": "object",
   "properties": {
+    "width": {
+      "description": "viewport width",
+      "type": "integer"
+    },
+    "height": {
+      "description": "viewport height",
+      "type": "integer"
+    },
     "vertex": {
       "description": "relative path to vertex shader",
       "type": "string"

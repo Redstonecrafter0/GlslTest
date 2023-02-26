@@ -1,4 +1,6 @@
 {
+  "width": 1280,
+  "height": 720,
   "vertex": "vert.glsl",
   "fragment": "frag.glsl",
   "input_data": {
@@ -20,8 +22,6 @@
     }
   ],
   "uniform": {
-    "uColor": [0.5],
-    "uMask": ["mask.png"],
-    "uTexture": ["lenna.png"]
+    "uColor": [0.5]
   }
 }
