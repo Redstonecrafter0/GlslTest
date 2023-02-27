@@ -18,3 +18,5 @@ add_subdirectory(libs/glfw)
 
 target_link_libraries(GlslTest ${OPENGL_LIBRARY} glad nlohmann_json::nlohmann_json glfw)
 include_directories(GlslTest ${OPENGL_INCLUDE_DIR} src)
+
+install(TARGETS GlslTest DESTINATION bin)
