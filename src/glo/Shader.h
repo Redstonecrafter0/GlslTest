@@ -1,6 +1,6 @@
 #pragma once
 
-#include <GL/glew.h>
+#include <glad/gl.h>
 #include <fstream>
 
 namespace glo {
@@ -10,7 +10,7 @@ public:
     GLuint shader;
     GLenum type;
 
-    Shader(std::ifstream srcFile, GLenum shaderType);
+    Shader(std::ifstream& srcFile, GLenum shaderType);
 };
 
 }

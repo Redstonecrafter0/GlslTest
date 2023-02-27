@@ -5,7 +5,7 @@
 
 using namespace glo;
 
-Shader::Shader(std::ifstream srcFile, GLenum shaderType) : shader(glCreateShader(shaderType)), type(shaderType) {
+Shader::Shader(std::ifstream& srcFile, GLenum shaderType) : shader(glCreateShader(shaderType)), type(shaderType) {
     std::string src;
     char c;
     while (srcFile.good()) {

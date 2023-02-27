@@ -1,6 +1,6 @@
 #pragma once
 
-#include <GL/glew.h>
+#include <glad/gl.h>
 #include <nlohmann/json.hpp>
 #include "Shader.h"
 #include "Texture.h"

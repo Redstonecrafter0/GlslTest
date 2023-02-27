@@ -122,7 +122,7 @@ void ShaderProgram::loadUniforms(const json& config, const std::filesystem::path
                 std::vector<GLint> slots;
                 for (const auto& j : vec) {
                     if (j.compare(j.length() - 4, 4, ".png") == 0) {
-                        textures.emplace_back(new Texture(currentTextureSlot, imagePath / j));
+                        textures.emplace_back(new Texture(currentTextureSlot, (imagePath / j).string()));
                     } else {
                         auto shaderConfig = new ShaderConfig(imagePath / j, currentTextureSlot);
                         use();

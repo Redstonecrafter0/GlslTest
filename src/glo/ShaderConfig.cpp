@@ -3,7 +3,6 @@
 #include "Shader.h"
 #include "ShaderProgram.h"
 
-#include <GL/glew.h>
 #include <nlohmann/json.hpp>
 
 #include "stb_image_write.h"
@@ -18,8 +17,10 @@ ShaderConfig::ShaderConfig(const std::filesystem::path& shaderDir, GLint slot) :
     auto vertices = config["input_data"]["vertices"].get<std::vector<GLfloat>>();
     auto elements = config["input_data"]["elements"].get<std::vector<GLuint>>();
 
-    auto vertexShader = Shader(shaderDir / config["vertex"].get<std::string>(), GL_VERTEX_SHADER);
-    auto fragmentShader = Shader(shaderDir / config["fragment"].get<std::string>(), GL_FRAGMENT_SHADER);
+    auto vertexShaderFile = std::ifstream(shaderDir / config["vertex"].get<std::string>());
+    auto fragmentShaderFile = std::ifstream(shaderDir / config["fragment"].get<std::string>());
+    auto vertexShader = Shader(vertexShaderFile, GL_VERTEX_SHADER);
+    auto fragmentShader = Shader(fragmentShaderFile, GL_FRAGMENT_SHADER);
     shaderProgram = new ShaderProgram(vertexShader, fragmentShader);
     shaderProgram->use();
 
