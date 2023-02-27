@@ -30,6 +30,7 @@ int main(int argc, char** argv) {
     }
 
     if (!glfwInit()) {
+        std::cerr << "GLFW failed initializing" << std::endl;
         return -1;
     }
 
@@ -39,6 +40,7 @@ int main(int argc, char** argv) {
 
     GLFWwindow* window = glfwCreateWindow(width, height, "GlslTest", nullptr, nullptr);
     if (!window) {
+        std::cerr << "GLFW failed creating window" << std::endl;
         glfwTerminate();
         return -1;
     }
@@ -49,6 +51,7 @@ int main(int argc, char** argv) {
     glfwShowWindow(window);
 
     if (gladLoadGL(glfwGetProcAddress) == 0) {
+        std::cerr << "GLAD failed loading" << std::endl;
         glfwTerminate();
         return -1;
     }
