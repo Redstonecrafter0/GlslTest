@@ -20,7 +20,7 @@ jobs:
           submodules: recursive
       - name: Install Ninja
         if: matrix.os == 'ubuntu-latest'
-        run: 'sudo apt-get install ninja-build'
+        run: 'sudo apt-get install ninja-build freeglut3-dev'
       - name: Build
         run: |
           cmake -G "Ninja" -DCMAKE_BUILD_TYPE="Release" -DCMAKE_C_COMPILER="clang" -DCMAKE_CXX_COMPILER="clang++" -DCMAKE_INSTALL_PREFIX="install" -B build .
