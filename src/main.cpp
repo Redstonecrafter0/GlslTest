@@ -1,4 +1,5 @@
 #include <iostream>
+#include <chrono>
 
 #include <glad/gl.h>
 #include <GLFW/glfw3.h>
@@ -46,7 +47,7 @@ int main(int argc, char** argv) {
     }
 
     glfwMakeContextCurrent(window);
-    glfwSwapInterval(1);
+    glfwSwapInterval(0);
     glfwSetWindowSizeCallback(window, windowResizeCallback);
     glfwShowWindow(window);
 
@@ -67,6 +68,10 @@ int main(int argc, char** argv) {
     glfwSetWindowSize(window, shaderConfig.width, shaderConfig.height);
 
     bool save = true;
+    bool benchmarkDone = false;
+    auto start = std::chrono::steady_clock::now();
+
+    uint32_t frames = 0;
 
     while (!glfwWindowShouldClose(window)) {
         glClearColor(0, 0, 0, 0);
@@ -75,11 +80,17 @@ int main(int argc, char** argv) {
 
         if (save) {
             save = false;
+            start = std::chrono::steady_clock::now();
+        } else if (!benchmarkDone && std::chrono::steady_clock::now() - start > std::chrono::seconds(10)) {
+            benchmarkDone = true;
+            std::cout << "Benchmarked: " << frames / 10.0 << " FPS" << std::endl;
+            glfwSwapInterval(1);
+        } else if (!benchmarkDone) {
+            frames++;
         }
 
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
-    std::filesystem::remove("s"); // delete this file that gets created but i dont know how and where
     exit(0); // just ignore all occurring errors
 }
