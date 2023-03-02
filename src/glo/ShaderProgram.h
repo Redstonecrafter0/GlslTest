@@ -22,6 +22,8 @@ public:
 
     void loadUniforms(const json& config, const std::filesystem::path& imagePath, std::vector<ShaderConfig*>& dependencies);
 
+    void updateUniformTextures();
+
 private:
     std::vector<Texture*> textures;
 };

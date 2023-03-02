@@ -26,7 +26,7 @@ Shader::Shader(std::ifstream& srcFile, GLenum shaderType) : shader(glCreateShade
         GLchar err[len];
         glGetShaderInfoLog(shader, len, &errLen, err);
         auto errLog = std::string(err, errLen);
-        std::cerr << "Failed to compile vertex shader!" << std::endl;
+        std::cerr << "Failed to compile " << ((shaderType == GL_VERTEX_SHADER) ? "vertex" : "fragment") << " shader!" << std::endl;
         std::cerr << errLog << std::endl;
         glfwTerminate();
         exit(-1);

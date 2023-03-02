@@ -1,8 +1,8 @@
 {
-  "width": 512,
-  "height": 512,
+  "width": 256,
+  "height": 256,
   "vertex": "../pass/vert.glsl",
-  "fragment": "../pass/frag.glsl",
+  "fragment": "frag.glsl",
   "input_data": {
     "vertices": [
       -1, -1,
@@ -22,7 +22,6 @@
     }
   ],
   "uniform": {
-    "uTexture": ["../result/lenna.png"],
-    "uTexOffset": [0.0078125]
+    "uTexture": ["../result/lenna.png"]
   }
 }

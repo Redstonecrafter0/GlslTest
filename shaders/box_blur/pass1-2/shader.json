@@ -1,8 +1,8 @@
 {
-  "width": 512,
-  "height": 512,
+  "width": 256,
+  "height": 256,
   "vertex": "../pass/vert.glsl",
-  "fragment": "../pass/frag.glsl",
+  "fragment": "../pass/frag_v.glsl",
   "input_data": {
     "vertices": [
       -1, -1,
@@ -22,7 +22,8 @@
     }
   ],
   "uniform": {
-    "uTexture": ["../pass4"],
-    "uTexOffset": [0.00390625]
+    "uTexture": ["../pass1-1"],
+    "uRadius": [2],
+    "uTexelSize": [0.00390625]
   }
 }

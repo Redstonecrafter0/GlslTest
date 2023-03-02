@@ -40,6 +40,7 @@ void ShaderProgram::use() const {
 }
 
 void ShaderProgram::loadUniforms(const json& config, const std::filesystem::path& imagePath, std::vector<ShaderConfig*>& dependencies) {
+    use();
     auto uniformLocations = std::map<std::string, GLint>();
     GLint uniformCount;
     glGetProgramiv(shaderProgram, GL_ACTIVE_UNIFORMS, &uniformCount);
@@ -136,5 +137,11 @@ void ShaderProgram::loadUniforms(const json& config, const std::filesystem::path
                 break;
             }
         }
+    }
+}
+
+void ShaderProgram::updateUniformTextures() {
+    for (auto& i : textures) {
+        i->bind();
     }
 }
