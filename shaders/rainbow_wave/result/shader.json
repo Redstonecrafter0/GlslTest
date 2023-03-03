@@ -1,0 +1,25 @@
+{
+  "width": 1024,
+  "height": 1024,
+  "vertex": "vert.glsl",
+  "fragment": "frag.glsl",
+  "input_data": {
+    "vertices": [
+      -1, -1,
+      -1, 1,
+      1, 1,
+      1, -1
+    ],
+    "elements": [
+      0, 1, 2,
+      2, 3, 0
+    ]
+  },
+  "input_locations": [
+    {
+      "name": "aPos",
+      "size": 2
+    }
+  ],
+  "uniform": {}
+}

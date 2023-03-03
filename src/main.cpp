@@ -13,6 +13,7 @@
 #include "stb_image_write.h"
 
 using namespace glo;
+using namespace std::chrono;
 
 GLsizei width = 1280;
 GLsizei height = 720;
@@ -69,19 +70,19 @@ int main(int argc, char** argv) {
 
     bool save = true;
     bool benchmarkDone = false;
-    auto start = std::chrono::steady_clock::now();
+    auto start = steady_clock::now();
 
     uint32_t frames = 0;
 
     while (!glfwWindowShouldClose(window)) {
         glClearColor(0, 0, 0, 0);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        shaderConfig.render(save);
+        shaderConfig.render(save, static_cast<GLint>(duration_cast<milliseconds>(steady_clock::now() - start).count()));
 
         if (save) {
             save = false;
-            start = std::chrono::steady_clock::now();
-        } else if (!benchmarkDone && std::chrono::steady_clock::now() - start > std::chrono::seconds(10)) {
+            start = steady_clock::now();
+        } else if (!benchmarkDone && steady_clock::now() - start > seconds(10)) {
             benchmarkDone = true;
             std::cout << "Benchmarked: " << frames / 10.0 << " FPS" << std::endl;
             glfwSwapInterval(1);

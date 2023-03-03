@@ -59,6 +59,10 @@ void ShaderProgram::loadUniforms(const json& config, const std::filesystem::path
         if (name.compare(name.length() - 3, 3, "[0]") == 0) {
             name = name.substr(0, name.length() - 3);
         }
+        if (name == "uTime" && uniformType == GL_INT) {
+            timeLocation = i;
+            continue;
+        }
         auto value = config["uniform"][name];
         size_t valSize;
         switch (uniformType) {
@@ -140,8 +144,12 @@ void ShaderProgram::loadUniforms(const json& config, const std::filesystem::path
     }
 }
 
-void ShaderProgram::updateUniformTextures() {
+void ShaderProgram::updateUniforms(GLint time) {
+    use();
     for (auto& i : textures) {
         i->bind();
+    }
+    if (timeLocation != -1) {
+        glUniform1i(timeLocation, time);
     }
 }

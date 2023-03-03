@@ -4,3 +4,4 @@
 *.iws
 cmake-build-*
 output.png
+/shaders/private

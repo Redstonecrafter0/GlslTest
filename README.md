@@ -2,6 +2,14 @@
 
 ## Usage
 
+### Notice
+There is currently a single uniform available on every shader that MUST NOT
+be declared in the `shader.json`.
+
+| name  | type | description                              |
+|-------|------|------------------------------------------|
+| uTime | int  | current time in milliseconds since start |
+
 ### Files
 
 Directory structure 

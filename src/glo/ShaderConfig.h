@@ -14,7 +14,7 @@ public:
     ShaderConfig(const std::filesystem::path& shaderDir, GLint slot = -1);
     ~ShaderConfig();
 
-    void render(bool save) const;
+    void render(bool save, GLint time) const;
 
     Framebuffer* getFramebuffer() const;
 

@@ -22,10 +22,11 @@ public:
 
     void loadUniforms(const json& config, const std::filesystem::path& imagePath, std::vector<ShaderConfig*>& dependencies);
 
-    void updateUniformTextures();
+    void updateUniforms(GLint time);
 
 private:
     std::vector<Texture*> textures;
+    GLint timeLocation = -1;
 };
 
 }

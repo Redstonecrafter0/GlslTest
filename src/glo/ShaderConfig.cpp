@@ -48,13 +48,12 @@ ShaderConfig::~ShaderConfig() {
     delete framebuffer;
 }
 
-void ShaderConfig::render(bool save) const {
+void ShaderConfig::render(bool save, GLint time) const {
     for (auto& i : dependencies) {
-        i->render(save);
+        i->render(save, time);
     }
     framebuffer->bind();
-    shaderProgram->use();
-    shaderProgram->updateUniformTextures();
+    shaderProgram->updateUniforms(time);
     vao->draw();
     if (save) {
         framebuffer->save(shaderDir / "output.png");
