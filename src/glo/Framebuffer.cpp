@@ -1,4 +1,5 @@
 #include "Framebuffer.h"
+#include <iostream>
 
 #include "stb_image_write.h"
 
@@ -31,6 +32,6 @@ void Framebuffer::save(const std::filesystem::path& outputPath) {
     bind();
     auto buffer = new unsigned char[width * height * 4];
     glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
-    stbi_write_png(reinterpret_cast<const char*>(outputPath.c_str()), width, height, 4, buffer, width * 4);
+    stbi_write_png(reinterpret_cast<const char*>(outputPath.string().c_str()), width, height, 4, buffer, width * 4);
     delete[] buffer;
 }
