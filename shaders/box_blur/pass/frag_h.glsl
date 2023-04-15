@@ -12,6 +12,6 @@ void main() {
     color = vec4(0);
     int size = uRadius * 2 + 1;
     for (int i = -uRadius; i <= uRadius; i++) {
-        color += texture2D(uTexture, fPos + vec2(uTexelSize * uRadius * i, 0)) / size;
+        color += texture2D(uTexture, fPos + vec2(uTexelSize * i, 0)) / size;
     }
 }
